@@ -117,3 +117,20 @@ public class PriceCalculationTest {
 }
     }
 }
+```
+
+## Aufgabe 3 – Bonus: Fehleranalyse
+
+**Fehler 1 – Falsche Reihenfolge der Bedingungen:**  
+Im ursprünglichen Code wurde zuerst `extras >= 3` geprüft und danach `extras >= 5`.  
+Dadurch wurde der 15%-Rabatt nie angewendet, weil die erste Bedingung schon bei 5 Extras wahr war.  
+
+**Korrektur:**  
+```java
+if (extras >= 5)
+    addon_discount = 15;
+else if (extras >= 3)
+    addon_discount = 10;
+else
+    addon_discount = 0;
+
