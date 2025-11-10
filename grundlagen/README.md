@@ -115,15 +115,14 @@ public class PriceCalculationTest {
         return baseWithDiscount + specialprice + extrasWithDiscount;
     }
 }
-    }
-}
+
 ```
 
 ## Aufgabe 3 – Bonus: Fehleranalyse
 
 **Fehler 1 – Falsche Reihenfolge der Bedingungen:**  
 Im ursprünglichen Code wurde zuerst `extras >= 3` geprüft und danach `extras >= 5`.  
-Dadurch wurde der 15%-Rabatt nie angewendet, weil die erste Bedingung schon bei 5 Extras wahr war.  
+Dadurch wurde der 15 %-Rabatt nie angewendet, weil die erste Bedingung schon bei 5 Extras wahr war.
 
 **Korrektur:**  
 ```java
@@ -133,4 +132,31 @@ else if (extras >= 3)
     addon_discount = 10;
 else
     addon_discount = 0;
+```
+**Fehler 2 – Rabattlogik vermischt:**  
+Im Originalcode wurde geprüft:  
+```java
+if (discount > addon_discount)
+    addon_discount = discount;
+```
+Dadurch wurde der Händlerrabatt fälschlich auch auf die Zubehörteile angewendet, obwohl laut Aufgabenstellung der
 
+Händlerrabatt nur auf den Grundpreis,
+
+Zubehörrabatt nur auf die Extras wirken darf.
+
+Das Programm hat also zwei Rabatte vermischt und falsche Endpreise berechnet.
+
+Korrektur:
+Die beiden Rabatte müssen getrennt behandelt werden – also keine Vergleichszeile mehr.
+Die korrekte Berechnung lautet z. B.:
+**Korrektur:**  
+```java
+double baseWithDiscount = baseprice * (100 - discount) / 100.0;
+double extrasWithDiscount = extraprice * (100 - addonDiscount) / 100.0;
+double result = baseWithDiscount + specialprice + extrasWithDiscount;
+```
+Damit gelten:
+Der Händlerrabatt nur auf den Grundpreis
+Der Zubehörrabatt nur auf den Zubehörpreis
+Keine Vermischung mehr
