@@ -248,3 +248,126 @@ public void testPerformance() {
 Für weitere Details und Beispiele besuchen Sie die [offizielle JUnit-Dokumentation](https://junit.org/junit5/docs/current/user-guide/).
 
 ---
+
+# Übung 3: Banken Simulation
+
+## Funktionsweise der Software
+
+### **Hauptklassen**
+
+#### **<ins>Account</ins>**
+
+Hier werden die grundlegende Eigenschaften und Methoden eines Kontos definiert:
+
+- Attribute: ```id, balance```, ```bookings```
+- Methoden: ```deposit(int date, long amount)```, ```withdraw(int date, long amount)```, ```getId()```, ```getBalance()```, ```print()```  
+  Einzahlen und Zurückziehen vom Geld; Kontostand und Kontonummer bekommen.
+
+---
+
+#### **<ins>SavingsAccount</ins>** (erbt von Account)
+
+Spezialisierte Kontoart für gespartes Guthaben:
+
+- Methoden: ```withdraw(int date, long amount)```  
+  Guthaben prüfen, ruft Account.java wenn genügend Guthaben vorhanden, verhindert Abhebungen wenn nicht.
+
+---
+
+#### **<ins>SalaryAccount</ins>** (erbt von Account)
+
+Konto für Gehaltseinzahlungen:
+
+- Attribute: ```creditLimit``` → Kreditlimit des Kontos, erlaubt Überziehungen bis zum definierten negativen Betrag.  
+- Methoden: ```withdraw(int date, long amount)```  
+  Berechnet Guthaben nach Abhebung, verhindert falls Limit überschritten wird; ruft Account.java, wenn Bedingung erfüllt.
+
+---
+
+#### **<ins>PromoYouthSavingsAccount</ins>** (erbt von SavingsAccount)
+
+Jugend-Sparkonto mit Promotionen:
+
+- Methoden: ```deposit(int date, long amount)```  
+  Bei Einzahlungen wird ein Bonus von 1% des Betrags gewährt.
+
+---
+
+#### **<ins>Bank</ins>**
+
+Verwaltung einer Sammlung von Konten:
+
+- Attribute: ```accounts``` (verwaltet Konten), ```nextAccountId``` (automatisch generierte Id für neue Konten)
+- Methoden:
+  - Kontoerstellung:  
+    ```createSavingsAccount()```, ```createPromoYouthAccount()```, ```createSalaryAccount(long creditLimit)```  
+    Erstellt verschiedene Kontotypen.
+  - Transaktionen:  
+    ```deposit(String id, int date, long amount)```, ```withdraw(String id, int date, long amount)```  
+    Führt Einzahlungen und Abhebungen auf einem bestimmten Konto aus.
+  - Saldo-Abfragen:  
+    ```getBalance()```, ```getBalance(String id)```  
+    Gibt Gesamtsaldo oder spezifischen Kontostand zurück.
+  - Kontodruck:  
+    ```print(String id)```, ```print(String id, int year, int month)```, ```printTop5()```, ```printBottom5()```  
+    Gibt Kontoauszüge aus oder zeigt die fünf Konten mit dem höchsten/niedrigsten Saldo.
+
+---
+
+#### **<ins>Booking</ins>**
+
+Repräsentiert eine Buchung:
+
+- Attribute: ```date```, ```amount```  
+- Methoden: ```Booking(int date, long amount)```, ```getDate()```, ```getAmount()```, ```print(long balance)```  
+  Erstellt die Buchung, gibt Datum/Betrag zurück, druckt eine Buchungszeile mit aktuellem Saldo.
+
+---
+
+#### **<ins>BankUtils</ins>**
+
+Dienstprogrammklasse mit hilfreichen Funktionen:
+
+- Attribute: ```TWO_DIGIT_FORMAT```, ```AMOUNT_FORMAT```
+- Methoden: ```formatBankDate(int date)```, ```formatAccount(long amount)```  
+  Formatiert Bankdaten und Beträge.
+
+---
+
+## **Beziehungen zwischen den Klassen**
+
+- **Bank → Account**  
+  - Die Bank **erstellt Konten** und speichert sie in ```accounts```.  
+  - Die Bank **ruft Methoden der Accounts auf**, z. B. ```deposit()```, ```withdraw()```, ```print()```.
+
+- **Account → Booking**  
+  - Jeder Account **erstellt Booking-Objekte**, wenn Einzahlungen oder Abhebungen stattfinden.  
+  - Die Buchungen werden in ```bookings``` gespeichert (Komposition: ohne Account existiert Booking nicht).
+
+- **Booking → BankUtils**  
+  - Booking nutzt BankUtils für die **Formatierung von Datum und Beträgen**.
+
+- **Vererbungshierarchie (Account als Basisklasse)**  
+  - ```SavingsAccount```, ```SalaryAccount``` und ```PromoYouthSavingsAccount``` **erweitern Account**.  
+  - Sie **überschreiben Methoden**, um spezielles Verhalten (Limit, Bonus, Sperrlogik) umzusetzen.
+
+- **SavingsAccount → PromoYouthSavingsAccount**  
+  - PromoYouthSavingsAccount erweitert SavingsAccount und erbt dessen Auszahlungslogik.
+
+---
+
+## **Ablauf einer typischen Transaktion**
+
+1. Die Bank erhält einen Aufruf wie ```deposit(id, date, amount)```.  
+2. Die Bank sucht das Konto in ```accounts```.  
+3. Das Konto führt ```deposit()``` aus.  
+4. Ein neues ```Booking``` wird erstellt und gespeichert.  
+5. Der Saldo wird aktualisiert.  
+6. Die Ausgabe erfolgt über ```print()``` mit Unterstützung von ```BankUtils```.
+
+---
+
+# Übung 4: Unit-Tests implementieren
+![image](https://github.com/user-attachments/assets/5e6cc04f-96bd-462b-9e98-8386c14c6922)
+
+
