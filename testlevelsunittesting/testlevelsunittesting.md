@@ -365,4 +365,9 @@ Dienstprogrammklasse mit hilfreichen Funktionen:
 5. Der Saldo wird aktualisiert.  
 6. Die Ausgabe erfolgt über ```print()``` mit Unterstützung von ```BankUtils```.
 
+---
+
+# Übung 4: Unit-Tests implementieren
+![image](https://github.com/user-attachments/assets/5e6cc04f-96bd-462b-9e98-8386c14c6922)
+
 
