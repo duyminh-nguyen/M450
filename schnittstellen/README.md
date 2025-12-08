@@ -13,7 +13,7 @@
 ![image](https://github.com/user-attachments/assets/15ac011a-2050-469b-a9ce-046420dfffa2)
 
 ### Tests funktionieren:
-![image](https://github.com/user-attachments/assets/07173b8d-20dd-46b6-9fc3-0f02c4f87f22)
+![image](https://github.com/user-attachments/assets/ca4d3e6a-b111-4f36-9610-a556c4c0d5cc)
 
 ## Aufgabe 2:
 ### Komparator Klasse erweitert
