@@ -4,7 +4,7 @@
 
 ## Aufgabe 2
 
-![cypress](https://github.com/user-attachments/assets/d96d35ac-d757-4534-853a-33d13385d4dc)
+![cypress]("https://github.com/user-attachments/assets/bdc57866-c6b6-442b-b656-26f03d9e6e2b)
 
 ### Tool
 Für die End-To-End-Tests wurde **Cypress** verwendet.
