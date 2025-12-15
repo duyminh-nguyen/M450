@@ -1,13 +1,13 @@
 # Aufgabe 1
 ![image](https://github.com/user-attachments/assets/7f1aea05-0772-435e-930d-91081b634eb8)
-- Wir verwenden Postman, um die REST-Schnittstelle des Backends zu automatisieren und zu testen.
+- Ich verwende Postman, um die REST-Schnittstelle des Backends zu automatisieren und zu testen.
 
 ## Aufgabe 2
 
 ![cypress](https://github.com/user-attachments/assets/bdc57866-c6b6-442b-b656-26f03d9e6e2b)
 
 ### Tool
-Für die End-To-End-Tests wurde **Cypress** verwendet.
+Für die End-To-End-Tests verwende ich **Cypress**.
 
 ### Vorgehen
 - Cypress wurde ins Projekt integriert.
