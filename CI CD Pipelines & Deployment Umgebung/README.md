@@ -55,3 +55,22 @@ Docker Compose ermöglicht ein schnelles und einfaches Aufsetzen von Entwicklung
 Das Setup ist übersichtlich, reproduzierbar und ohne grossen Konfigurationsaufwand umsetzbar.  
 Grenzen zeigen sich bei Skalierung und produktivem Einsatz, weshalb für Staging und Production andere Tools wie Kuber
 
+
+---
+
+# Recipe Planner
+## Aufgabe 1:
+### Getestete Inhalte
+
+**Controller Tests**
+- Alle Endpoints des `RecipeController` wurden mit MockMvc getestet
+- Rückgabestatus (HTTP 200) und JSON-Struktur wurden überprüft
+- Service-Abhängigkeiten wurden gemockt
+
+**Mapper Tests**
+- `IngredientEntityMapper`: Mapping von Entity zu Domain und zurück
+- Mapping von Listen (Entity ↔ Domain)
+- `RecipeEntityMapper`: Mapping aller Felder inkl. verschachtelter Ingredients
+- SoftAssertions wurden verwendet, um mehrere Felder in einem Testlauf zu prüfen
+
+
