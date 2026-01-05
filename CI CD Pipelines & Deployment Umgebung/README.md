@@ -1,1 +1,57 @@
-# M450
+# Deployment-Umgebungen
+
+## Aufgabe 1: Zuordnung der Tools zu Umgebungen
+
+### Docker Compose
+- **Geeignet für:** Development, Testing
+- **Begründung:** Schnell, einfach, lokal ausführbar, ideal für reproduzierbare Setups
+
+### Kubernetes
+- **Geeignet für:** Staging, Production
+- **Begründung:** Skalierbar, Self-Healing, produktionsnahes Deployment
+
+### Vagrant
+- **Geeignet für:** Development
+- **Begründung:** Reproduzierbare VMs, sinnvoll bei OS-nahen Tests
+
+### Terraform
+- **Geeignet für:** Staging, Production
+- **Begründung:** Infrastructure as Code für konsistente Umgebungen
+
+### Zusammenfassung
+- **Development:** Docker Compose / Vagrant  
+- **Testing:** Docker Compose  
+- **Staging:** Kubernetes + Terraform  
+- **Production:** Kubernetes + Terraform  
+
+---
+
+## Aufgabe 2: Gewählte Lösung & Reflexion
+
+### Gewählte Software
+- **Tool:** Docker Compose
+- **Umgebung:** Testing
+
+### Ziel
+- Automatisches Setup einer Testumgebung mit mehreren Services
+
+### Beispiel-Setup
+- PostgreSQL (Datenbank)
+- Adminer
+- Optional: Backend (z.B. Spring Boot)
+
+### Beobachtete Probleme
+- Port-Konflikte
+- Service startet bevor DB bereit ist
+- Persistente Volumes bei Tests
+
+### Fazit
+Docker Compose eignet sich sehr gut für Development- und Test-Umgebungen.  
+Für produktive und skalierbare Systeme sind Kubernetes und Terraform sinnvoller.
+
+### Reflexion
+
+Docker Compose ermöglicht ein schnelles und einfaches Aufsetzen von Entwicklungs- und Testumgebungen.  
+Das Setup ist übersichtlich, reproduzierbar und ohne grossen Konfigurationsaufwand umsetzbar.  
+Grenzen zeigen sich bei Skalierung und produktivem Einsatz, weshalb für Staging und Production andere Tools wie Kuber
+
