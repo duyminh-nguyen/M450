@@ -82,4 +82,15 @@ Zusätzlich ist JaCoCo eingebunden. Bei `mvn verify` wird ein HTML-Coverage-Repo
 unter `target/site/jacoco/index.html` generiert und im Browser einsehbar.
 <img width="1919" height="501" alt="image" src="https://github.com/user-attachments/assets/cad07719-2f0b-4333-a597-81b8a0083603" />
 
+## Aufgabe 3 – Pipeline
+
+Es wurde eine Build-Pipeline mit GitHub Actions eingerichtet.
+Bei jedem Push oder Pull Request wird die Pipeline automatisch gestartet.
+
+Die Pipeline führt das Backend mit Java 17 aus und startet die Unit Tests
+mittels Maven (`mvn verify`).
+
+Pro Pipeline-Durchlauf werden die Test-Reports (Maven Surefire) sowie
+ein JaCoCo HTML-Coverage-Report generiert und als Artefakte in GitHub
+bereitgestellt, wo sie eingesehen werden können.
 
