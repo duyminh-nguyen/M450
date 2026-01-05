@@ -73,4 +73,13 @@ Grenzen zeigen sich bei Skalierung und produktivem Einsatz, weshalb für Staging
 - `RecipeEntityMapper`: Mapping aller Felder inkl. verschachtelter Ingredients
 - SoftAssertions wurden verwendet, um mehrere Felder in einem Testlauf zu prüfen
 
+## Aufgabe 2 – Test Reports
+
+Die Unit Tests werden automatisiert mit Maven Surefire ausgeführt.
+Die Test-Reports werden unter `target/surefire-reports` erstellt.
+
+Zusätzlich ist JaCoCo eingebunden. Bei `mvn verify` wird ein HTML-Coverage-Report
+unter `target/site/jacoco/index.html` generiert und im Browser einsehbar.
+<img width="1919" height="501" alt="image" src="https://github.com/user-attachments/assets/cad07719-2f0b-4333-a597-81b8a0083603" />
+
 
